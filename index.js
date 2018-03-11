@@ -7,4 +7,4 @@ const aggregator = new (require('./lib/aggregator'))(socket_server);
 
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
-http.listen(3100, () => log.info('listening on 3200'));
+http.listen(3200, () => log.info('listening on 3200'));
