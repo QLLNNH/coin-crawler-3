@@ -160,8 +160,10 @@
                 $('#symbols tbody').append(`
                     <tr id="${symbol}" class="symbol_row">
                         <td class="display_symbol">${display_symbol}</td>
-                        <td class="usd"></td>
-                        <td class="rmb"></td>
+                        <td id="index_price">
+                            <div class="usd"></div>
+                            <div class="rmb"></div>
+                        </td>
                         <td>
                             <div class="inline_div this_week_price_usd usd"></div>
                             <div class="inline_div this_week_price_rmb rmb"></div>
@@ -237,8 +239,8 @@
             if (Array.isArray(rows) && rows.length) {
                 rows.forEach((row) => {
                     const symbol = row[0];
-                    $(`#${symbol} td`).eq(1).text(row[1]);
-                    $(`#${symbol} td`).eq(2).text((Number(row[1]) * rate).toFixed(2));
+                    $(`#${symbol} #index_price div`).eq(0).text(row[1]);
+                    $(`#${symbol} #index_price div`).eq(1).text((Number(row[1]) * rate).toFixed(2));
                     $(`#${symbol} .this_week_price_usd`).text(row[2]);
                     $(`#${symbol} .this_week_price_rmb`).text((Number(row[2]) * rate).toFixed(2));
                     $(`#${symbol} .this_week_amount`).text(row[3]);
