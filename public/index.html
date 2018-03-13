@@ -233,23 +233,21 @@
             socket.emit('kline', interval);
         });
 
-        socket.on('kline', (msgs) => {
-            const rate = msgs.rate;
-            const rows = msgs.data;
+        socket.on('kline', (rows) => {
             if (Array.isArray(rows) && rows.length) {
                 rows.forEach((row) => {
                     const symbol = row[0];
                     $(`#${symbol} #index_price div`).eq(0).text(row[1]);
-                    $(`#${symbol} #index_price div`).eq(1).text((Number(row[1]) * rate).toFixed(2));
-                    $(`#${symbol} .this_week_price_usd`).text(row[2]);
-                    $(`#${symbol} .this_week_price_rmb`).text((Number(row[2]) * rate).toFixed(2));
-                    $(`#${symbol} .this_week_amount`).text(row[3]);
-                    $(`#${symbol} .next_week_price_usd`).text(row[4]);
-                    $(`#${symbol} .next_week_price_rmb`).text((Number(row[4]) * rate).toFixed(2));
-                    $(`#${symbol} .next_week_amount`).text(row[5]);
-                    $(`#${symbol} .quarter_price_usd`).text(row[6]);
-                    $(`#${symbol} .quarter_price_rmb`).text((Number(row[6]) * rate).toFixed(2));
-                    $(`#${symbol} .quarter_amount`).text(row[7]);
+                    $(`#${symbol} #index_price div`).eq(1).text(row[2]);
+                    $(`#${symbol} .this_week_price_usd`).text(row[3]);
+                    $(`#${symbol} .this_week_price_rmb`).text(row[4]);
+                    $(`#${symbol} .this_week_amount`).text(row[5]);
+                    $(`#${symbol} .next_week_price_usd`).text(row[6]);
+                    $(`#${symbol} .next_week_price_rmb`).text(row[7]);
+                    $(`#${symbol} .next_week_amount`).text(row[8]);
+                    $(`#${symbol} .quarter_price_usd`).text(row[9]);
+                    $(`#${symbol} .quarter_price_rmb`).text(row[10]);
+                    $(`#${symbol} .quarter_amount`).text(row[11]);
 
                     {
                         let input_obj = $(`#${symbol}_this_week_input`);
