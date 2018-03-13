@@ -235,6 +235,7 @@
 
         socket.on('kline', (rows) => {
             if (Array.isArray(rows) && rows.length) {
+                let amount = 0;
                 rows.forEach((row) => {
                     const symbol = row[0];
                     $(`#${symbol} #index_price div`).eq(0).text(row[1]);
@@ -262,6 +263,7 @@
                                 prev_obj.css('color', 'forestgreen');
                                 const word = `${new Date().toLocaleString()} ${symbol.split('_')[0].toUpperCase()}当周${interval}min交易量为${prev_value}k。`;
                                 print_log(word);
+                                amount += 1;
                             }
                             else prev_obj.css('color', 'black');
                         }
@@ -280,6 +282,7 @@
                                 prev_obj.css('color', 'forestgreen');
                                 const word = `${new Date().toLocaleString()} ${symbol.split('_')[0].toUpperCase()}次周${interval}min交易量为${prev_value}k。`;
                                 print_log(word);
+                                amount += 1;
                             }
                             else prev_obj.css('color', 'black');
                         }
@@ -298,12 +301,13 @@
                                 prev_obj.css('color', 'forestgreen');
                                 const word = `${new Date().toLocaleString()} ${symbol.split('_')[0].toUpperCase()}季度${interval}min交易量为${prev_value}k。`;
                                 print_log(word);
+                                amount += 1;
                             }
                             else prev_obj.css('color', 'black');
                         }
                     }
                 });
-                print_log('----------------------------------------');
+                if (amount) print_log('----------------------------------------');
             }
             else alert('服务器刚启动，加载完毕后页面会刷新');
         });
