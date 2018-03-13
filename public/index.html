@@ -220,8 +220,7 @@
                         const prev_obj = $(this).prev();
                         const prev_value = Number(prev_obj.text());
 
-                        if (input_value > prev_value) prev_obj.css('color', 'red');
-                        else if (input_value < prev_value) prev_obj.css('color', 'forestgreen');
+                        if (input_value < prev_value) prev_obj.css('color', 'red');
                         else prev_obj.css('color', 'black');
                     }
                     else $(this).prev().css('color', 'black');
